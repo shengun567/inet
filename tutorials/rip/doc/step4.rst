@@ -26,11 +26,6 @@ The configuration in ``omnetpp.ini`` is the following:
    :start-at: Step4
    :end-before: ------
 
-The scenario manager script:
-
-.. literalinclude:: ../scenario1.xml
-   :language: xml
-
 **Variant "A":**
 
 .. literalinclude:: ../omnetpp.ini
@@ -42,7 +37,6 @@ The scenario manager script:
 
 .. literalinclude:: ../scenario5.xml
    :language: xml
-
 **Variant "B":**
 
 .. literalinclude:: ../omnetpp.ini
@@ -54,7 +48,6 @@ The scenario manager script:
 
 .. literalinclude:: ../scenario6.xml
    :language: xml
-
 **Variant "C":**
 
 .. literalinclude:: ../omnetpp.ini
@@ -66,7 +59,6 @@ The scenario manager script:
 
 .. literalinclude:: ../scenario6.xml
    :language: xml
-
 
 Results
 -------
@@ -103,7 +95,6 @@ TODO: screenshots or routing tables / RIP packets
 
 Sources:
 :download:`omnetpp.ini <../omnetpp.ini>`,
-:download:`RipNetworkA.ned <../RipNetworkA.ned>`,
-:download:`scenario1.xml <../scenario1.xml>`,
 :download:`scenario5.xml <../scenario5.xml>`,
 :download:`scenario6.xml <../scenario6.xml>`
+:download:`RipNetworkA.ned <../RipNetworkA.ned>`
