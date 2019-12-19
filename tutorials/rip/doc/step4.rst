@@ -37,6 +37,7 @@ The scenario manager script:
 
 .. literalinclude:: ../scenario5.xml
    :language: xml
+
 **Variant "B":**
 
 .. literalinclude:: ../omnetpp.ini
@@ -48,6 +49,7 @@ The scenario manager script:
 
 .. literalinclude:: ../scenario6.xml
    :language: xml
+
 **Variant "C":**
 
 .. literalinclude:: ../omnetpp.ini
