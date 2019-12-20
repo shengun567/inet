@@ -1,0 +1,63 @@
+Visualizing Signal Power Density
+
+3 parts:
+
+-spectrum			-> something like the crosstalk/coexistence
+-spectrogram			-> when the spectrum is changing in time (like some kind of modulation?)(or the interference of 2 signals)
+-power density map
+
+-obstacles
+-directional antenna
+-video of signal propagation
+-sikeres és sikertelen vétel (vizuálisan)
+-zavaró jel
+
+-dragging probes
+-and probes themselves
+
+-sima wifi signal 2 channelel
+-nem kell chirp -> az külön
+
+
+
+what do we want to demonstrate:
+
+generally about the three visualizations -> the axes
+dimensional is needed
+this is good for troubleshooting and verifying the model during development
+
+-spectrum figures
+	what does it do
+	the signal and the noise is displayed separately
+	the scale is automatic, based on all signals. and all figures have the same scale, so the signals can be compared
+	the obstacles attenuate the signal, and there is path loss as well
+	important parameters: spectrumMode, spectrumFigureInterpolationSize
+	the common parts -> the shared parameters and what they are about
+	some description in the existing radio medium activity showcase ?
+	what should the scenario be ?
+		wifi signals, 2 channels
+		probe
+		directional antenna ? ? ? ? where and when ?
+
+at first, just 4 nodes as in the crosstalk and coexistence...maybe some wall somewhere
+then, the same, just with spectrograms
+then, the four nodes in the building, with directional antennas ? ? ? ? -> the directional antenna is important because why ?
+or just one pair should have the directional antennas (the ones between which the wall is)
+
+3 videos check -> dont necessarily use this in the showcase -> it needs to be user recreatable (this would be too slow)
+screenshots to omnetpp/inet website
+
+the spectogram is frequency and power over time
+
+the spectrum figure is power over frequency (changing over time)
+
+the power density map is power in space in a fixed frequency (changing over time)
+
+the local power density map should be not at all nodes just one pair maybe ?
+
+nope this just not cool.
+
+-demonstrate the colors...transmitted signal, noise, signal (between the transmitter and the recipient node; between the transmitter and another node)
+-demonstrate the frequency dependency -> between one of each channel's node
+
+-> so maybe one of the nodes should not display the local power density map -> it seems that the local map has more resolution
