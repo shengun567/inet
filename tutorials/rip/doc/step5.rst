@@ -1,5 +1,5 @@
-Step 5. RIP Triggered Update
-============================
+Step 5. Triggered Updates
+=========================
 
 Goals
 -----

@@ -1,6 +1,6 @@
 <!-- scenario7.xml -->
 <scenario>
-    <at t="250">
+    <at t="50">
         <disconnect src-module="router2" dest-module="switch1" />
     </at>
     <at t="602">

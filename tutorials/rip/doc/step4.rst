@@ -1,5 +1,5 @@
-Step 4. RIP Timeout Timer and Garbage Collection Timer
-======================================================
+Step 4. Timeout Timer and Garbage Collection Timer
+==================================================
 
 Goals
 -----
@@ -9,24 +9,31 @@ garbage-collection timers.
 
 Routers talk to their neighbours regularly to update them about the changes in
 their routing tables. Every time a router receives one of these messages from
-one of its neighbours it resets a timeout timer associated with this route. If
+one of its neighbours, it resets a timeout timer associated with this route. If
 these messages stop coming, the timer expires (its default value is 180
-seconds), then the router marks this route as "unreachable",  but keeps it in
-its routing table, and starts a garbage-collection timer.  It then deletes the
-route after the garbage-collection timer expires (its default value is 120
-seconds).
+seconds), and the router marks this route as unreachable. However, it keeps the
+route in its routing table, and starts a garbage-collection timer. It
+deletes the route when the garbage-collection timer expires (its default value
+is 120 seconds).
 
 Network Configuration
 ---------------------
 
 Our network configuration is the same as the one we used in the earlier steps.
 
+The ``omnetpp.ini`` configuration is listed here:
+
+.. literalinclude:: ../omnetpp.ini
+   :language: ini
+   :start-at: Step4
+   :end-before: ------
+
 Experiments
 -----------
 
-We simulate a breakdown by disconnecting the link connecting ``router2`` to ``switch1``
-at t = 50s, to observe how RIP behaves under three possible scenarios in which
-the link becomes operational:
+To observe how RIP behaves, we introduce a breakdown by disconnecting the link
+between ``router2`` and ``switch1`` at t = 50s, and simulate three
+possible scenarios in which the link becomes operational again:
 
 * A. Before the timeout timer associated with its routing table entry expires,
 * B. After the timeout timer expires but before the garbage-collection timer expires, and
