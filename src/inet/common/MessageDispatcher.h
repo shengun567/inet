@@ -22,13 +22,16 @@
 #include "inet/common/IProtocolRegistrationListener.h"
 #include "inet/common/packet/Message.h"
 #include "inet/common/packet/Packet.h"
+#include "inet/queueing/contract/IActivePacketSource.h"
+#include "inet/queueing/contract/IPacketQueueingElement.h"
+#include "inet/queueing/contract/IPassivePacketSink.h"
 
 namespace inet {
 
 /**
  * This class implements the corresponding module. See module documentation for more details.
  */
-class INET_API MessageDispatcher : public cSimpleModule, public IProtocolRegistrationListener, public IInterfaceRegistrationListener
+class INET_API MessageDispatcher : public cSimpleModule, public IProtocolRegistrationListener, public IInterfaceRegistrationListener, public queueing::IActivePacketSource, public queueing::IPassivePacketSink, public queueing::IPacketQueueingElement
 {
   public:
     class Key
@@ -64,6 +67,16 @@ class INET_API MessageDispatcher : public cSimpleModule, public IProtocolRegistr
     virtual cGate *handleMessage(Message *request, cGate *inGate);
 
   public:
+    virtual bool supportsPushPacket(cGate *gate) const override { return true; }
+    virtual bool supportsPopPacket(cGate *gate) const override { return false; }
+
+    virtual bool canPushSomePacket(cGate *gate = nullptr) const override;
+    virtual bool canPushPacket(Packet *packet, cGate *gate = nullptr) const override;
+    virtual void pushPacket(Packet *packet, cGate *gate = nullptr) override;
+
+    virtual IPassivePacketSink *getConsumer(cGate *gate) override { return nullptr; }
+    virtual void handleCanPushPacket(cGate *gate) override;
+
     virtual void handleRegisterInterface(const InterfaceEntry &interface, cGate *out, cGate *in) override;
     virtual void handleRegisterService(const Protocol& protocol, cGate *out, ServicePrimitive servicePrimitive) override;
     virtual void handleRegisterProtocol(const Protocol& protocol, cGate *in, ServicePrimitive servicePrimitive) override;
