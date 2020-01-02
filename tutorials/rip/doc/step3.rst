@@ -1,5 +1,5 @@
-Step 3. Link Breakage
-=====================
+Step 3. Link Breakage and Routing Table Updates
+===============================================
 
 Goals
 -----
