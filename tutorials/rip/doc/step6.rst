@@ -82,10 +82,8 @@ the problem.
 
 .. literalinclude:: ../omnetpp.ini
    :language: ini
-   :start-at: Step6Solution3
+   :start-at: Step6TriggeredUpdates
    :end-before: ------
-
-TODO rename section
 
 Solution 1: Split horizon
 ~~~~~~~~~~~~~~~~~~~~~~~~~
