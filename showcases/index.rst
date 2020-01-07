@@ -69,6 +69,7 @@ The following showcases are available:
       sensornetwork/doc/index
       ieee802154/doc/index
       power/doc/index
+      coexistence/doc/index
       .. levelofdetail/doc/index
       .. scaling/doc/index
       throughput/doc/index
@@ -82,7 +83,7 @@ The following showcases are available:
       errorrate/doc/index
       hiddennode/doc/index
       multiradio/doc/index
-      .. crosstalk/doc/index
+      crosstalk/doc/index
       .. infrastructure/doc/index
 
 .. toctree::
