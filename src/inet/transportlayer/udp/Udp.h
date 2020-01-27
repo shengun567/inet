@@ -66,6 +66,8 @@ class INET_API Udp : public TransportProtocolBase
         EPHEMERAL_PORTRANGE_END   = 5000
     };
 
+    cMessage *uselessMsg = nullptr;
+
     struct MulticastMembership
     {
         L3Address multicastAddress;
@@ -179,6 +181,8 @@ class INET_API Udp : public TransportProtocolBase
 
     // process Udp packets coming from IP
     virtual void processUDPPacket(Packet *udpPacket);
+
+    virtual void handleSelfMessage(cMessage *message) override;
 
     // process packets from application
     virtual void handleUpperPacket(Packet *appData) override;
