@@ -125,8 +125,17 @@ void Udp::initialize(int stage)
     }
 }
 
+void Udp::handleSelfMessage(cMessage *message)
+{
+    if (message->getKind() == 42) {
+        std::cout << "USELESS MSG RECEIVED!" << endl;
+        delete message;
+    }
+}
+
 void Udp::handleLowerPacket(Packet *packet)
 {
+    scheduleAt(simTime() + 1E-6, new cMessage(nullptr, 42));
     // received from IP layer
     ASSERT(packet->getControlInfo() == nullptr);
     auto protocol = packet->getTag<PacketProtocolTag>()->getProtocol();
