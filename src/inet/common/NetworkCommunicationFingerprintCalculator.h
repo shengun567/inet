@@ -20,6 +20,8 @@
 
 namespace inet {
 
+#define NETWORK_COMMUNICATION_FINGERPRINT_INGREDIENTS "NID"
+
 class INET_API NetworkCommunicationFingerprintCalculator : public cSingleFingerprintCalculator
 {
   protected:
@@ -30,6 +32,10 @@ class INET_API NetworkCommunicationFingerprintCalculator : public cSingleFingerp
     };
 
   protected:
+    bool filterEvents = false;
+
+  protected:
+    virtual void parseIngredients(const char *s) override;
     virtual FingerprintIngredient validateIngredient(char ch) override;
     virtual bool addEventIngredient(cEvent *event, FingerprintIngredient ingredient) override;
 
