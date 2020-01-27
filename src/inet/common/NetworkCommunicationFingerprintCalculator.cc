@@ -21,9 +21,20 @@ namespace inet {
 
 Register_Class(NetworkCommunicationFingerprintCalculator);
 
+void NetworkCommunicationFingerprintCalculator::parseIngredients(const char *s)
+{
+    cSingleFingerprintCalculator::parseIngredients(s);
+    for (char ch : std::string(NETWORK_COMMUNICATION_FINGERPRINT_INGREDIENTS)) {
+        if (strchr(s, ch)) {
+            filterEvents = true;
+            break;
+        }
+    }
+}
+
 NetworkCommunicationFingerprintCalculator::FingerprintIngredient NetworkCommunicationFingerprintCalculator::validateIngredient(char ch)
 {
-    if (strchr("NID", ch) != nullptr)
+    if (strchr(NETWORK_COMMUNICATION_FINGERPRINT_INGREDIENTS, ch) != nullptr)
         return (FingerprintIngredient)ch;
     else
         return cSingleFingerprintCalculator::validateIngredient(ch);
@@ -31,7 +42,7 @@ NetworkCommunicationFingerprintCalculator::FingerprintIngredient NetworkCommunic
 
 bool NetworkCommunicationFingerprintCalculator::addEventIngredient(cEvent *event, FingerprintIngredient ingredient)
 {
-    if (strchr("NID", ingredient) == nullptr)
+    if (strchr(NETWORK_COMMUNICATION_FINGERPRINT_INGREDIENTS, ingredient) == nullptr)
         return false;
     else {
         auto cpacket = check_and_cast<cPacket *>(event);
@@ -73,19 +84,22 @@ bool NetworkCommunicationFingerprintCalculator::addEventIngredient(cEvent *event
 
 void NetworkCommunicationFingerprintCalculator::addEvent(cEvent *event)
 {
-    if (event->isMessage() && static_cast<cMessage *>(event)->isPacket()) {
-        auto cpacket = static_cast<cPacket *>(event);
-        auto packet = dynamic_cast<Packet *>(cpacket);
-        if (packet == nullptr)
-            packet = dynamic_cast<Packet *>(cpacket->getEncapsulatedPacket());
-        if (packet != nullptr) {
-            auto senderNode = findContainingNode(cpacket->getSenderModule());
-            auto arrivalNode = findContainingNode(cpacket->getArrivalModule());
-            if (senderNode != arrivalNode)
-                cSingleFingerprintCalculator::addEvent(event);
+    if (!filterEvents)
+        cSingleFingerprintCalculator::addEvent(event);
+    else {
+        if (event->isMessage() && static_cast<cMessage *>(event)->isPacket()) {
+            auto cpacket = static_cast<cPacket *>(event);
+            auto packet = dynamic_cast<Packet *>(cpacket);
+            if (packet == nullptr)
+                packet = dynamic_cast<Packet *>(cpacket->getEncapsulatedPacket());
+            if (packet != nullptr) {
+                auto senderNode = findContainingNode(cpacket->getSenderModule());
+                auto arrivalNode = findContainingNode(cpacket->getArrivalModule());
+                if (senderNode != arrivalNode)
+                    cSingleFingerprintCalculator::addEvent(event);
+            }
         }
     }
-
 }
 
 } // namespace
