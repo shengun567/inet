@@ -1,0 +1,15 @@
+# working directory, command line arguments, simulation time limit, fingerprint, expected result, tags
+#/showcases/visualizer/spectrum/,        -f omnetpp.ini -c SpectrumFigure -r 0,        10s,         9f3a-2778/tlx, PASS,
+#/showcases/visualizer/spectrum/,        -f omnetpp.ini -c Spectrogram -r 0,        10s,         9f3a-2778/tlx, PASS,
+#/showcases/visualizer/spectrum/,        -f omnetpp.ini -c PowerDensityMap -r 0,        1s,         911c-f7c9/tlx, PASS,
+
+.,        -f omnetpp.ini -c Wireless -r 0,                5s,         d477-98c9/tplx, PASS,
+.,        -f omnetpp.ini -c Mixed -r 0,                   5s,         2057-99b2/tplx, PASS,
+.,        -f omnetpp.ini -c Wired -r 0,                   5s,         b39c-715b/tplx, PASS,
+.,        -f omnetpp.ini -c WirelessNID -r 0,             5s,         d410-0d99/NID,  PASS,
+.,        -f omnetpp.ini -c WiredNID -r 0,                5s,         1145-0392/NID,  PASS,
+.,        -f omnetpp.ini -c MixedNID -r 0,                5s,         d2fb-2f48/NID,  PASS,
+.,        -f omnetpp.ini -c WirelessNIDDimensional -r 0,  5s,         d410-0d99/NID,  PASS, 
+.,        -f omnetpp.ini -c WirelessDimensional -r 0,     5s,         d477-98c9/tplx, PASS, 
+.,        -f omnetpp.ini -c Ospf -r 0,                    5000s,      0cf5-6ae4/tplx, PASS, 
+.,        -f omnetpp.ini -c WireAndUseLess -r 0,          5s,         dd25-8e2b/tplx, PASS, 
