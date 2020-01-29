@@ -1,4 +1,4 @@
-package inet.showcases.general.fingerprint;
+package inet.tutorials.fingerprint;
 
 import inet.common.scenario.ScenarioManager;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
