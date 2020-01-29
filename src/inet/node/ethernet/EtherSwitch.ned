@@ -48,7 +48,7 @@ module EtherSwitch
         int numPcapRecorders = default(0);
         bool hasStatus = default(false);
         bool hasStp = default(false);
-        bool csmacdSupport = default(true);  // by default use CSMA/CD --FIXME remove
+        bool csmacdSupport = default(false);  // by default use CSMA/CD --FIXME remove
         string fcsMode @enum("declared","computed") = default("declared");
         string spanningTreeProtocol = default("Stp");
         int numEthInterfaces = default(0);  // minimum number of ethernet interfaces
