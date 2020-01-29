@@ -48,7 +48,7 @@ module SmallLAN
     gates:
         inout ethg;
     submodules:
-        hub: EtherHub {
+        hub: EtherSwitch {
             @display("p=400,100");
         }
         host[h]: EtherHost {
@@ -80,7 +80,7 @@ module MediumLAN
         host[n]: EtherHost {
             @display("p=100,200,row,150");
         }
-        hub: EtherHub {
+        hub: EtherSwitch {
             @display("p=625,300");
         }
         hhost[h]: EtherHost {
@@ -119,7 +119,7 @@ module LargeLAN
         channel cabletobus extends DatarateChannel
         {
             parameters:
-                delay = 0s;
+                delay = 0.1us;
                 datarate = 10Mbps;
         }
     submodules:
@@ -129,16 +129,16 @@ module LargeLAN
         host[n]: EtherHost {
             @display("p=100,200,row,100");
         }
-        hub: EtherHub {
+        hub: EtherSwitch {
             @display("p=900,100");
         }
         hhost[h]: EtherHost {
             @display("p=1050,100,col,100");
         }
-        bus: EtherBus {
+        bus: EtherSwitch {
             parameters:
-                positions = "5 10 15"; // every 5 meters
-                propagationSpeed = 2e8 mps;  // 1us = 200m
+//                positions = "5 10 15"; // every 5 meters
+//                propagationSpeed = 2e8 mps;  // 1us = 200m
                 @display("b=800,5;o=#408060;p=450,300");
         }
         bhost[b]: EtherHost {
@@ -192,7 +192,7 @@ network LargeNet
         channel cabletoserver extends DatarateChannel
         {
             parameters:
-                delay = 0s;
+                delay = 0.1us;
                 datarate = 1Gbps;
         }
     submodules:
@@ -338,5 +338,4 @@ network LargeNet
         switchB.ethg++ <--> cable <--> switchBB[4].ethg++;
 
 }
-
 
