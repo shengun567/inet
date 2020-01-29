@@ -61,10 +61,10 @@ network BulkTransfer
                 @display("p=100,100;is=s");
         }
     connections:
-        client1.pppg++ <--> C <--> router.pppg++;
-        client2.pppg++ <--> C <--> router.pppg++;
-        client3.pppg++ <--> C <--> router.pppg++;
-        client1.pppg++ <--> C <--> server.pppg++;
-        server.pppg++ <--> C <--> router.pppg++;
+        client1.ethg++ <--> C <--> router.ethg++;
+        client2.ethg++ <--> C <--> router.ethg++;
+        client3.ethg++ <--> C <--> router.ethg++;
+        client1.ethg++ <--> C <--> server.ethg++;
+        server.ethg++ <--> C <--> router.ethg++;
 }
 
