@@ -12,7 +12,11 @@ Some changes in the model can add new events to the simulation. These events ine
 
 To filter out the modules, run the fingerprint test with the ``--fingerprint-modules`` command line option, e.g.:
 
-TODO example
+.. TODO example
+
+.. code-block:: bash
+
+   $ inet_fingerprinttest -a --fingerprint-modules='"not fullPath=~**.wlan[*].mac.**"'
 
 Then, update the fingerprints, make the change, and run the fingerprints again.
 

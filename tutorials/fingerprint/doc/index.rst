@@ -1,4 +1,4 @@
-:orphan:
+.. :orphan:
 
 Fingerprint
 ===========
@@ -6,23 +6,20 @@ Fingerprint
 Goals
 -----
 
-.. literalinclude:: ../Udp_mod.cc
-   :diff: ../Udp_orig.cc
+  The introduction
 
-The introduction
+  - what are fingerprints and what they're good for
+    #development #regressiontesting #verification
 
-- what are fingerprints and what they're good for
-  #development #regressiontesting #verification
+  - what are the various ingredients? and where to find them
+  - what other kinds of fingerprint calculators are available, besides the default one ?
 
-- what are the various ingredients? and where to find them
-- what other kinds of fingerprint calculators are available, besides the default one ?
+  - how to run it? the different possibilities (ini/fingerprint tool)
 
-- how to run it? the different possibilities (ini/fingerprint tool)
+  - what is this tutorial about ?
+  - how is this tutorial structured ?
 
-- what is this tutorial about ?
-- how is this tutorial structured ?
-
-The steps
+  The steps
 
 ----------------------------------------------------------
 
@@ -83,13 +80,17 @@ Running a fingerprint with other ingredients might help verify that the model is
 
   the fingerprint is a 32 bit value, and also it contains the ingredients, which are denoted by a letter
 
-  such as abcd-ef01-1248-abcd/tplx
+  such as abcd-ef01-1248-abcd/tplx -> more like 32 bits
 
   the list of ingredients are in the manual
 
 The fingerprint is a 32-bit hexadecimal value, upended by the ingredients used for calculating it, denoted by letters:
 
 TODO: example fingerprint
+
+.. code-block:: text
+
+   53de-64a7/tplx
 
 In this example, ``t`` means time of event, ``p`` the full path of modules, ``l`` the message length, and ``x`` the extra data added programatically. Other possible ingredients include various properties of messages, modules and results. For the complete list, check out the TODO.
 
@@ -101,6 +102,8 @@ you just say:
 | fingerprint = 0000-0000/tplx
 
 you just specify a value and the ingredients and it will be calculated and the 0000-0000 can be replaced by the resulting value.
+
+TODO: qtenv prints the fingerprint
 
 also, the fingerprint is calculated whether the simulation is run with qtenv or from the command line.
 
@@ -123,11 +126,36 @@ The fingerprint tool
 - can be filtered with -m which is a regex?
 - for more info -h
 
+The fingerprint tool is useful for automating fingerprint tests/is a conventient way to run fingerprint tests. It is located in the inet/bin folder, and when the inet directory is added to the PATH, it can be run from any directory (inet subdirectory?).
+By default, the script runs all simulations defined in .csv files in the current folder.
+The set of simulations can be filtered with the ``-m`` command line option.
+
+Note that ``-h`` lists all available options.
+
+A line in the .csv file defines a simulation run, by specifying the working directory, command line arguments, sim time limit, fingerprint+ingredients, expected result, and tags.
+The result can either be PASS, FAIL or ERROR.
+
+It also creates additional .csv files:
+
+- an UPDATED file, which has the fingerprints just calculated for all lines
+- a FAILED file, which contains just the lines for the failed simulations, with the calculated fingerprint. This file is useful for re-running just the simulations with failed fingerprints
+
+The updated file can be used to overwrite the original one to accept the new fingerprints.
+
 The steps
 ---------
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   *
+   first
+   refactoring
+   renaming
+   newevents_filtering
+   newevents_nid
+
+.. .. toctree::
+      :maxdepth: 1
+      :glob:
+
+      *
